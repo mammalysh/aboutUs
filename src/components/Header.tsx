@@ -1,11 +1,8 @@
 import React from 'react';
 import { Phone, Heart, Sparkles } from 'lucide-react';
 import { STORE_CONFIG } from '../storeConfig';
-import { getStoreStatus } from '../utils/scheduleHelper';
 
 export function Header() {
-  const status = getStoreStatus();
-
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-[#FAF9F7]/90 border-b border-rose-100/60 transition-all">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
@@ -38,28 +35,18 @@ export function Header() {
           </div>
         </a>
 
-        {/* Правая часть: статус работы и телефон */}
+        {/* Правая часть: телефон */}
         <div className="flex items-center gap-2.5 sm:gap-4">
-          
-          {/* Статус «Открыто / Закрыто» */}
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-2xs text-xs font-medium text-slate-700">
-            <span className={`w-2 h-2 rounded-full ${status.isOpen ? 'bg-emerald-500 animate-pulse' : 'bg-amber-400'}`} />
-            <span>{status.statusText}</span>
-            <span className="text-slate-400 font-normal">({status.subText})</span>
-          </div>
-
-          {/* Номер телефона */}
           <a
             href={`tel:${STORE_CONFIG.phone.raw}`}
             id="header-phone-button"
-            className="flex items-center gap-2 px-3.5 py-2 sm:px-4 sm:py-2 rounded-full bg-white hover:bg-rose-50/50 border border-slate-200/90 hover:border-[#E86B9A]/40 text-slate-800 hover:text-[#E86B9A] font-bold text-xs sm:text-sm shadow-2xs transition-all active:scale-95"
+            className="flex items-center gap-2 px-3.5 py-2 sm:px-4 sm:py-2 rounded-full bg-white hover:bg-rose-50/50 border border-slate-200/90 hover:border-[#E86B9A]/40 text-slate-800 hover:text-[#E86B9A] font-bold text-xs sm:text-sm shadow-2xs transition-all active:scale-95 touch-manipulation"
             title="Позвонить в магазин"
           >
             <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3CB3E5]" />
             <span className="hidden sm:inline tracking-tight">{STORE_CONFIG.phone.display}</span>
             <span className="sm:hidden">Позвонить</span>
           </a>
-
         </div>
 
       </div>
