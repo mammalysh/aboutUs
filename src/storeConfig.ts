@@ -10,9 +10,8 @@
 
 export interface WorkingScheduleItem {
   days: string;
-  shortDays?: string; // Короткое обозначение для мобильных экранов (например «Пн — Пт»)
+  shortDays?: string; // Короткое обозначение для мобильных экранов (например «Пн», «Ср»)
   hours: string;
-  isToday?: boolean;
 }
 
 export interface StoreConfig {
@@ -32,7 +31,7 @@ export interface StoreConfig {
     googleMapsUrl: string;
   };
   schedule: {
-    summary: string; // Краткое описание (например, «Ежедневно с 10:00 до 20:00»)
+    summary: string; // Краткое описание
     details: WorkingScheduleItem[];
     note?: string; // Например, «Без перерыва на обед»
   };
@@ -82,34 +81,24 @@ export const STORE_CONFIG: StoreConfig = {
 
   // ============================================================================
   // 📞 1. НОМЕР ТЕЛЕФОНА
-  // 👉 Замените display на красивый формат, а raw на формат +79991234567 для звонка
   // ============================================================================
   phone: {
-    // Вставьте номер для отображения (например: '+7 (999) 123-45-67')
     display: '+7 (953) 918-65-71',
-    
-    // Вставьте номер для ссылки tel: (без пробелов и скобок, например: '+79991234567')
     raw: '+79539186571',
   },
 
   // ============================================================================
   // 📍 2. АДРЕС И КАРТЫ
-  // 👉 Вставьте сюда ваш город, улицу и ссылки на навигаторы
   // ============================================================================
   address: {
-    // Город
     city: 'г. Томск',
-    
-    // Улица, дом, офис
     street: 'пер. 1905г 14/1 НОВЫЙ ГУМ',
-    
-    // Ориентир для покупателей
     landmark: 'Главный вход. 2 этаж. Из лифта направо',
 
-    // 👉 Ссылка на Яндекс.Карты (для открытия маршрута)
+    // 👉 Ссылка на Яндекс.Карты
     yandexMapsUrl: 'https://yandex.ru/maps/org/mammalysh/159275118667/?ll=84.950150%2C56.494015&mode=search&sctx=ZAAAAAgBEAAaKAoSCZPF%2FUemPFVAEa4q%2B64IPkxAEhIJj3IwmwDD3j8RgIKLFTWYxD8iBgABAgMEBSgKOABAvo8GSAFibHJlYXJyPXNjaGVtZV9Mb2NhbC9HZW8vQWR2ZXJ0cy9SZWFycmFuZ2VCeUF1Y3Rpb24vU2ltaWxhck9yZ3NMaXN0QXVjdGlvbi9DYW5kaWRhdGVTZWFyY2hSYWRpdXNJbk1ldGVycz0xMDAwMGJscmVhcnI9c2NoZW1lX0xvY2FsL0dlby9BZHZlcnRzL1JlYXJyYW5nZUJ5QXVjdGlvbi9TaW1pbGFyT3Jnc0xpc3RBdWN0aW9uL1VzZUhpZ2hSZWNhbGxIYXJkUnVicmljQ2xhc3NpZmllcj0xagJydZ0BzczMPaABAKgBAL0Br0XlGMIBBsvgpazRBIICENCc0LDQvNC80LDQu9GL0YiKAgCSAgCaAgxkZXNrdG9wLW1hcHM%3D&sll=84.950150%2C56.494015&sspn=0.015020%2C0.005027&text=%D0%9C%D0%B0%D0%BC%D0%BC%D0%B0%D0%BB%D1%8B%D1%88&z=17',
 
-    // 👉 Ссылка на 2ГИС (если есть)
+    // 👉 Ссылка на 2ГИС
     gis2Url: 'https://2gis.ru/tomsk/search/%D0%BC%D0%B0%D0%BC%D0%BC%D0%B0%D0%BB%D1%8B%D1%88/firm/70000001094326168/84.950115%2C56.494058?m=84.950115%2C56.494058%2F13.91',
 
     // 👉 Ссылка на Google Карты
@@ -118,63 +107,58 @@ export const STORE_CONFIG: StoreConfig = {
 
   // ============================================================================
   // ⏰ 3. ЧАСЫ И ГРАФИК РАБОТЫ
-  // 👉 Настройте дни и время работы вашего магазина
   // ============================================================================
   schedule: {
-    // Краткая строка для быстрого взгляда
-    summary: '',
+    summary: 'Ср, Пт: 10:00 – 19:00 • Сб, Вс: 13:00 – 18:00',
     
-    // Подробный график по дням недели
     details: [
       { days: 'Понедельник', shortDays: 'Пн', hours: 'Выходной' },
       { days: 'Вторник', shortDays: 'Вт', hours: 'Выходной' },
       { days: 'Среда', shortDays: 'Ср', hours: '10:00 – 19:00' },
       { days: 'Четверг', shortDays: 'Чт', hours: 'Выходной' },
       { days: 'Пятница', shortDays: 'Пт', hours: '10:00 – 19:00' },
-      { days: 'Суббота', shortDays: 'Суббота', hours: '13:00 – 18:00' },
-      { days: 'Воскресенье', shortDays: 'Сб-Вс', hours: '13:00 – 18:00' },
+      { days: 'Суббота', shortDays: 'Сб', hours: '13:00 – 18:00' },
+      { days: 'Воскресенье', shortDays: 'Вс', hours: '13:00 – 18:00' },
     ],
     
-    // Дополнительная примечание
-    note: '',
+    note: 'Пн, Вт, Чт — выходные дни',
   },
 
   // ============================================================================
   // 🌐 4. СОЦИАЛЬНЫЕ СЕТИ И МЕССЕНДЖЕРЫ
-  // 👉 Вставьте ваши реальные ссылки на Instagram, VK, MAX
   // ============================================================================
   socialLinks: {
     // 👉 1) INSTAGRAM:
     instagram: {
-      url: 'https://instagram.com/mammalysh', // Ваша ссылка на инстаграм
-      handle: '@mammalysh',                  // Ваш логин
+      url: 'https://instagram.com/mammalysh',
+      handle: '@mammalysh',
       hint: 'Новинки, обзоры и отзывы',
     },
 
     // 👉 2) VK (ВКОНТАКТЕ):
     vk: {
-      url: 'https://vk.com/mammalysh',       // Ваша ссылка на сообщество ВК
-      name: 'vk.com/mammalysh',              // Красивое отображение
+      url: 'https://vk.com/mammalysh',
+      name: 'vk.com/mammalysh',
       hint: 'Каталог, акции и живое общение',
     },
 
     // 👉 3) MAX:
     max: {
-      url: 'https://max.ru/mammalysh',       // Ссылка на профиль в MAX
+      url: 'https://max.ru/mammalysh',
       label: 'Профиль в MAX',
       hint: 'Связь с консультантом онлайн',
     },
 
-    // 👉 4) TELEGRAM (по желанию):
+    // 👉 4) TELEGRAM:
     telegram: {
       url: 'https://t.me/mammalysh',
       handle: '@mammalysh',
     },
 
-    // 👉 5) WHATSAPP (по желанию):
+    // 👉 5) WHATSAPP:
     whatsapp: {
-      url: 'https://wa.me/79991234567',
-      phone: '+7 999 123-45-67',
+      url: 'https://wa.me/79539186571',
+      phone: '+7 (953) 918-65-71',
     },
   },
 
