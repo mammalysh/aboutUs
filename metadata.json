@@ -1,0 +1,6 @@
+{
+  "name": "Маммалыш — Магазин для беременных и кормящих мам",
+  "description": "Уютный сайт-визитка магазина для будущих и кормящих мам: адрес, телефон, часы работы и соцсети.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
