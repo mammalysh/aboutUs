@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Clock, Copy, Check, Navigation, Compass } from 'lucide-react';
 import { STORE_CONFIG } from '../storeConfig';
-import { getStoreStatus } from '../utils/scheduleHelper';
+import { isScheduleItemToday, getTodayTitle } from '../utils/todayHelper';
 
 export function ContactCard() {
   const [copiedType, setCopiedType] = useState<'phone' | 'address' | null>(null);
-  const status = getStoreStatus();
 
   const handleCopy = (text: string, type: 'phone' | 'address') => {
     navigator.clipboard.writeText(text);
@@ -16,6 +15,7 @@ export function ContactCard() {
   };
 
   const fullAddress = `${STORE_CONFIG.address.city}, ${STORE_CONFIG.address.street}`;
+  const todayTitle = getTodayTitle();
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8">
@@ -42,7 +42,7 @@ export function ContactCard() {
               type="button"
               onClick={() => handleCopy(fullAddress, 'address')}
               id="copy-address-button"
-              className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors active:scale-95 touch-manipulation"
+              className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors active:scale-95 touch-manipulation cursor-pointer"
               title="Скопировать адрес"
             >
               {copiedType === 'address' ? (
@@ -74,7 +74,7 @@ export function ContactCard() {
             )}
           </div>
 
-          {/* Кнопка навигатора */}
+          {/* Кнопки навигаторов */}
           <div className="flex flex-wrap items-center gap-2 mb-6">
             <a
               href={STORE_CONFIG.address.yandexMapsUrl}
@@ -119,7 +119,7 @@ export function ContactCard() {
               type="button"
               onClick={() => handleCopy(STORE_CONFIG.phone.display, 'phone')}
               id="copy-phone-button"
-              className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors active:scale-95 touch-manipulation"
+              className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors active:scale-95 touch-manipulation cursor-pointer"
               title="Скопировать телефон"
             >
               {copiedType === 'phone' ? (
@@ -159,63 +159,73 @@ export function ContactCard() {
       <div className="flex flex-col justify-between rounded-3xl bg-white border border-slate-200/80 p-4 sm:p-6 md:p-7 shadow-xs">
         <div>
           
-          {/* Шапка расписания: адаптивная, не ломается на узких смартфонах */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 mb-4">
+          {/* Шапка расписания */}
+          <div className="flex items-center justify-between gap-2 mb-4">
             <div className="flex items-center gap-2.5 min-w-0">
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#3CB3E5]/10 flex items-center justify-center shrink-0">
                 <Clock className="w-5 h-5 text-[#3CB3E5]" />
               </div>
               <div className="min-w-0">
-                <h2 className="text-base sm:text-lg font-extrabold text-slate-900 leading-tight whitespace-nowrap">
+                <h2 className="text-base sm:text-lg font-extrabold text-slate-900 leading-tight">
                   Часы и график работы
                 </h2>
-                <span className="text-xs text-slate-500 font-medium block mt-0.5">
-                  {STORE_CONFIG.schedule.summary}
-                </span>
+                {STORE_CONFIG.schedule.summary && (
+                  <span className="text-xs text-slate-500 font-medium block mt-0.5 truncate">
+                    {STORE_CONFIG.schedule.summary}
+                  </span>
+                )}
               </div>
             </div>
 
-            {/* Статус открыто/закрыто */}
-            <div className="self-start sm:self-auto pl-11 sm:pl-0">
-              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap ${status.isOpen ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-800 border border-amber-200'}`}>
-                <span className={`w-2 h-2 rounded-full shrink-0 ${status.isOpen ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`} />
-                <span>{status.isOpen ? 'Открыто сейчас' : 'Сейчас закрыто'}</span>
-              </span>
-            </div>
+            {/* Бейдж сегодняшнего дня недели */}
+            <span className="shrink-0 text-[11px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full border border-slate-200/60">
+              Сегодня: <strong className="text-slate-800">{todayTitle}</strong>
+            </span>
           </div>
 
-          {/* Таблица расписания по дням: аккуратная верстка без переноса слов */}
-          <div className="space-y-2 mb-4">
+          {/* Таблица расписания по дням с точным определением текущего дня */}
+          <div className="space-y-1.5 sm:space-y-2 mb-4">
             {STORE_CONFIG.schedule.details.map((item, idx) => {
-              const isWeekendSat = status.currentDayIndex === 6 && item.days.includes('Суббота');
-              const isWeekendSun = status.currentDayIndex === 0 && item.days.includes('Воскресенье');
-              const isWeekday = status.currentDayIndex >= 1 && status.currentDayIndex <= 5 && item.days.includes('Пятница');
-              const isToday = isWeekendSat || isWeekendSun || isWeekday;
+              const isToday = isScheduleItemToday(item);
+              const isDayOff = item.hours.toLowerCase().includes('выходн');
 
               return (
                 <div
                   key={idx}
-                  className={`flex items-center justify-between gap-2 px-3 sm:px-3.5 py-3 rounded-2xl transition-all border ${
+                  className={`flex items-center justify-between gap-2 px-3 sm:px-3.5 py-2.5 sm:py-3 rounded-2xl transition-all ${
                     isToday
-                      ? 'bg-rose-50/70 border-[#E86B9A]/40 text-slate-900 shadow-2xs'
-                      : 'bg-slate-50 border-slate-100 text-slate-700'
+                      ? 'bg-rose-50/90 border-2 border-[#E86B9A] shadow-xs'
+                      : 'bg-slate-50 border border-slate-100/90 text-slate-700'
                   }`}
                 >
-                  {/* День недели + бейдж «Сегодня» */}
                   <div className="flex items-center gap-2 min-w-0">
-                    <span className="text-xs sm:text-sm font-bold text-slate-900 whitespace-nowrap">
+                    <span
+                      className={`text-xs sm:text-sm font-bold whitespace-nowrap ${
+                        isToday ? 'text-[#E86B9A]' : 'text-slate-900'
+                      }`}
+                    >
                       <span className="sm:hidden">{item.shortDays || item.days}</span>
                       <span className="hidden sm:inline">{item.days}</span>
                     </span>
+
                     {isToday && (
-                      <span className="shrink-0 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-[#E86B9A] text-white tracking-wider whitespace-nowrap">
+                      <span className="shrink-0 text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wide px-2 py-0.5 rounded-full bg-[#E86B9A] text-white whitespace-nowrap shadow-2xs">
                         Сегодня
                       </span>
                     )}
                   </div>
 
-                  {/* Часы работы: всегда в одну строку без разрыва дефиса */}
-                  <span className={`shrink-0 text-xs sm:text-sm font-extrabold tabular-nums whitespace-nowrap ${isToday ? 'text-[#E86B9A]' : 'text-slate-900'}`}>
+                  <span
+                    className={`shrink-0 text-xs sm:text-sm tabular-nums whitespace-nowrap ${
+                      isDayOff
+                        ? isToday
+                          ? 'text-rose-700 font-extrabold'
+                          : 'text-slate-400 font-medium'
+                        : isToday
+                        ? 'text-slate-900 font-black'
+                        : 'text-slate-900 font-extrabold'
+                    }`}
+                  >
                     {item.hours}
                   </span>
                 </div>
