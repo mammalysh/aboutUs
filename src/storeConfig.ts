@@ -98,7 +98,7 @@ export const STORE_CONFIG: StoreConfig = {
   // ============================================================================
   address: {
     // Город
-    city: 'г. Njvcr',
+    city: 'г. Томск',
     
     // Улица, дом, офис
     street: 'пер. 1905г 14/1 НОВЫЙ ГУМ',
@@ -107,13 +107,13 @@ export const STORE_CONFIG: StoreConfig = {
     landmark: 'Главный вход. 2 этаж. Из лифта направо',
 
     // 👉 Ссылка на Яндекс.Карты (для открытия маршрута)
-    yandexMapsUrl: 'https://yandex.ru/maps/?text=Маммалыш',
+    yandexMapsUrl: 'https://yandex.ru/maps/org/mammalysh/159275118667/?ll=84.950150%2C56.494015&mode=search&sctx=ZAAAAAgBEAAaKAoSCZPF%2FUemPFVAEa4q%2B64IPkxAEhIJj3IwmwDD3j8RgIKLFTWYxD8iBgABAgMEBSgKOABAvo8GSAFibHJlYXJyPXNjaGVtZV9Mb2NhbC9HZW8vQWR2ZXJ0cy9SZWFycmFuZ2VCeUF1Y3Rpb24vU2ltaWxhck9yZ3NMaXN0QXVjdGlvbi9DYW5kaWRhdGVTZWFyY2hSYWRpdXNJbk1ldGVycz0xMDAwMGJscmVhcnI9c2NoZW1lX0xvY2FsL0dlby9BZHZlcnRzL1JlYXJyYW5nZUJ5QXVjdGlvbi9TaW1pbGFyT3Jnc0xpc3RBdWN0aW9uL1VzZUhpZ2hSZWNhbGxIYXJkUnVicmljQ2xhc3NpZmllcj0xagJydZ0BzczMPaABAKgBAL0Br0XlGMIBBsvgpazRBIICENCc0LDQvNC80LDQu9GL0YiKAgCSAgCaAgxkZXNrdG9wLW1hcHM%3D&sll=84.950150%2C56.494015&sspn=0.015020%2C0.005027&text=%D0%9C%D0%B0%D0%BC%D0%BC%D0%B0%D0%BB%D1%8B%D1%88&z=17',
 
     // 👉 Ссылка на 2ГИС (если есть)
-    gis2Url: 'https://2gis.ru/search/Маммалыш',
+    gis2Url: 'https://2gis.ru/tomsk/search/%D0%BC%D0%B0%D0%BC%D0%BC%D0%B0%D0%BB%D1%8B%D1%88/firm/70000001094326168/84.950115%2C56.494058?m=84.950115%2C56.494058%2F13.91',
 
     // 👉 Ссылка на Google Карты
-    googleMapsUrl: 'https://maps.google.com/?q=Маммалыш',
+    googleMapsUrl: 'https://www.google.com/maps/place/%D0%9C%D0%B0%D0%BC%D0%9C%D0%B0%D0%BB%D1%8B%D1%88/@56.4941593,84.9120265,14z/data=!4m10!1m2!2m1!1z0LzQsNC80LzQsNC70YvRiA!3m6!1s0x4326934cbfd9a801:0xeda9d0d79f91c948!8m2!3d56.4941593!4d84.9501353!15sChDQvNCw0LzQvNCw0LvRi9GIIgOIAQFaEiIQ0LzQsNC80LzQsNC70YvRiJIBD21hdGVybml0eV9zdG9yZeABAA!16s%2Fg%2F11b8twwn86?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D',
   },
 
   // ============================================================================
@@ -122,13 +122,13 @@ export const STORE_CONFIG: StoreConfig = {
   // ============================================================================
   schedule: {
     // Краткая строка для быстрого взгляда
-    summary: 'Ежедневно: 10:00 – 20:00',
+    summary: '',
     
     // Подробный график по дням недели
     details: [
-      { days: 'Понедельник — Пятница', shortDays: 'Пн — Пт', hours: '10:00 – 20:00' },
-      { days: 'Суббота', shortDays: 'Суббота', hours: '10:00 – 19:00' },
-      { days: 'Воскресенье', shortDays: 'Воскресенье', hours: '11:00 – 18:00' },
+      { days: 'Ср, Пн', shortDays: 'Пн — Пт', hours: '10:00 – 20:00' },
+      { days: 'Суббота', shortDays: 'Суббота', hours: '13:00 – 18:00' },
+      { days: 'Воскресенье', shortDays: 'Сб-Вс', hours: '13:00 – 18:00' },
     ],
     
     // Дополнительная примечание
