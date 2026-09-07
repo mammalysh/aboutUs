@@ -1,11 +1,8 @@
 import React from 'react';
 import { Sparkles, MapPin, Clock, Phone } from 'lucide-react';
 import { STORE_CONFIG } from '../storeConfig';
-import { getStoreStatus } from '../utils/scheduleHelper';
 
 export function HeroBanner() {
-  const status = getStoreStatus();
-
   return (
     <section className="relative overflow-hidden rounded-3xl bg-white border border-rose-100/80 shadow-xs p-5 sm:p-8 md:p-10 mb-6 sm:mb-8">
       {/* Мягкие акцентные фоновые пятна */}
@@ -20,16 +17,11 @@ export function HeroBanner() {
 
       <div className="relative z-10 max-w-3xl">
         
-        {/* Бейджик статуса */}
+        {/* Бейджик */}
         <div className="flex flex-wrap items-center gap-2 mb-3 sm:mb-4">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold tracking-wide uppercase bg-[#E86B9A]/10 text-[#E86B9A] border border-[#E86B9A]/20">
             <Sparkles className="w-3.5 h-3.5 shrink-0" />
             Официальный сайт-визитка
-          </span>
-
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-slate-100 text-slate-700">
-            <span className={`w-2 h-2 rounded-full shrink-0 ${status.isOpen ? 'bg-emerald-500 animate-pulse' : 'bg-amber-400'}`} />
-            <span>{status.statusText}</span>
           </span>
         </div>
 
