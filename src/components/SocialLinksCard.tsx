@@ -141,7 +141,7 @@ export function SocialLinksCard() {
       </div>
 
       {/* Дополнительные каналы для удобства (Telegram / WhatsApp) */}
-      {(socialLinks.telegram || socialLinks.whatsapp) && (
+      {(socialLinks.telegram) && (
         <div className="rounded-2xl bg-gradient-to-r from-rose-50/70 via-white to-sky-50/70 border border-slate-200/80 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-start sm:items-center gap-3">
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
@@ -163,20 +163,7 @@ export function SocialLinksCard() {
                 className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-bold transition-colors shadow-2xs min-h-[44px] touch-manipulation"
               >
                 <TelegramIcon className="w-4 h-4 text-[#229ED9]" />
-                <span>Telegram</span>
-              </a>
-            )}
-
-            {socialLinks.whatsapp && (
-              <a
-                href={socialLinks.whatsapp.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                id="whatsapp-link"
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-bold transition-colors shadow-2xs min-h-[44px] touch-manipulation"
-              >
-                <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
-                <span>WhatsApp</span>
+                <span>MAX</span>
               </a>
             )}
           </div>
