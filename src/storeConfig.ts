@@ -51,6 +51,12 @@ export interface StoreConfig {
       label: string;
       hint: string;
     };
+
+    mammalysh: {
+      url: string;
+      label: string;
+      hint: string;
+    };
     // Дополнительные каналы (можно включить или изменить)
     telegram?: {
       url: string;
