@@ -138,14 +138,14 @@ export const STORE_CONFIG: StoreConfig = {
     // 👉 2) VK (ВКОНТАКТЕ):
     vk: {
       url: 'https://vk.ru/mammalysh_tomsk',
-      name: 'vk.com/mammalysh',
+      name: 'Вконтакте',
       hint: 'Каталог, акции и живое общение',
     },
 
     // 👉 3) MAX:
     max: {
       url: 'https://max.ru/id222332758304_biz',
-      label: 'Профиль в MAX',
+      label: 'MAX',
       hint: 'Связь с консультантом онлайн',
     },
 
