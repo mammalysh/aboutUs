@@ -140,6 +140,42 @@ export function SocialLinksCard() {
 
       </div>
 
+      <div className="relative group rounded-3xl bg-white border border-[#3CB3E5]/30 hover:border-[#3CB3E5] p-5 sm:p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#3CB3E5]/20 to-transparent rounded-bl-full pointer-events-none" />
+          
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#3CB3E5] p-0.5 shadow-sm group-hover:scale-105 transition-transform flex items-center justify-center text-white">
+                <MaxIcon className="w-6 h-6 sm:w-7 sm:h-7" />
+              </div>
+              <span className="text-[11px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full bg-[#3CB3E5]/10 text-[#0f8cb8] border border-[#3CB3E5]/30">
+                MAX
+              </span>
+            </div>
+
+            <h3 className="text-base sm:text-lg font-extrabold text-slate-900 mb-1 group-hover:text-[#3CB3E5] transition-colors">
+              {socialLinks.mammalysh.label}
+            </h3>
+            <p className="text-xs text-slate-500 leading-relaxed mb-5">
+              {socialLinks.mammalysh.hint}
+            </p>
+          </div>
+
+          <a
+            href={socialLinks.mammalysh.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            id="max-link-button"
+            className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm bg-[#3CB3E5] hover:bg-[#2fa0d1] text-white shadow-xs shadow-[#3CB3E5]/30 transition-all active:scale-98 touch-manipulation min-h-[44px]"
+          >
+            <span>Перейти</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </div>
+
+      </div>
+
+
       {/* Дополнительные каналы для удобства (Telegram / WhatsApp) */}
       {(socialLinks.telegram) && (
         <div className="rounded-2xl bg-gradient-to-r from-rose-50/70 via-white to-sky-50/70 border border-slate-200/80 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
