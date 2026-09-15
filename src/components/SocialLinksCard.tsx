@@ -149,7 +149,7 @@ export function SocialLinksCard() {
                 <MaxIcon className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
               <span className="text-[11px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full bg-[#3CB3E5]/10 text-[#0f8cb8] border border-[#3CB3E5]/30">
-                MAX
+                Маммалыш
               </span>
             </div>
 
