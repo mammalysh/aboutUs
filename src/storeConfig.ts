@@ -150,7 +150,7 @@ export const STORE_CONFIG: StoreConfig = {
 
     // 👉 3) MAX:
     max: {
-      url: 'https://max.ru/id222332758304_biz',
+      url: 'https://max.ru/u/f9LHodD0cOJxFk-08liua-6mV1h20JyEjp88L0tgCHRWI5C_Py2N5PQkjOA',
       label: 'MAX',
       hint: 'Связь с консультантом онлайн',
     },
