@@ -172,8 +172,7 @@ export function SocialLinksCard() {
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>
-
-      </div>
+      
 
 
       {/* Дополнительные каналы для удобства (Telegram / WhatsApp) */}
