@@ -149,9 +149,15 @@ export const STORE_CONFIG: StoreConfig = {
       hint: 'Связь с консультантом онлайн',
     },
 
+    mammalysh: {
+      url: 'https://mammalysh.ru',
+      label: 'Основной сайт',
+      hint: 'Сайт',
+    },
+
     // 👉 4) TELEGRAM:
     telegram: {
-      url: 'https://web.max.ru/119201797',
+      url: 'https://max.ru/119201797',
       handle: '',
     },
 
