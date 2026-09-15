@@ -137,28 +137,28 @@ export const STORE_CONFIG: StoreConfig = {
 
     // 👉 2) VK (ВКОНТАКТЕ):
     vk: {
-      url: 'https://vk.com/mammalysh',
+      url: 'https://vk.ru/mammalysh_tomsk',
       name: 'vk.com/mammalysh',
       hint: 'Каталог, акции и живое общение',
     },
 
     // 👉 3) MAX:
     max: {
-      url: 'https://max.ru/mammalysh',
+      url: 'https://max.ru/id222332758304_biz',
       label: 'Профиль в MAX',
       hint: 'Связь с консультантом онлайн',
     },
 
     // 👉 4) TELEGRAM:
     telegram: {
-      url: 'https://t.me/mammalysh',
-      handle: '@mammalysh',
+      url: '',
+      handle: '',
     },
 
     // 👉 5) WHATSAPP:
     whatsapp: {
-      url: 'https://wa.me/79539186571',
-      phone: '+7 (953) 918-65-71',
+      url: '',
+      phone: '',
     },
   },
 
