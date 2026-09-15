@@ -150,8 +150,8 @@ export const STORE_CONFIG: StoreConfig = {
     },
 
     // 👉 4) TELEGRAM:
-    max: {
-      url: '',
+    telegram: {
+      url: 'https://web.max.ru/119201797',
       handle: '',
     },
 
