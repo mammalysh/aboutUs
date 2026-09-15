@@ -112,16 +112,16 @@ export const STORE_CONFIG: StoreConfig = {
     summary: 'Ср, Пт: 10:00 – 19:00 • Сб, Вс: 13:00 – 18:00',
     
     details: [
-      { days: 'Понедельник', shortDays: 'Пн', hours: 'Выходной' },
+      { days: 'Понедельник', shortDays: 'Пн', hours: '14:00 - 19:00' },
       { days: 'Вторник', shortDays: 'Вт', hours: 'Выходной' },
-      { days: 'Среда', shortDays: 'Ср', hours: '10:00 – 19:00' },
+      { days: 'Среда', shortDays: 'Ср', hours: '14:00 – 19:00' },
       { days: 'Четверг', shortDays: 'Чт', hours: 'Выходной' },
-      { days: 'Пятница', shortDays: 'Пт', hours: '10:00 – 19:00' },
+      { days: 'Пятница', shortDays: 'Пт', hours: '14:00 – 19:00' },
       { days: 'Суббота', shortDays: 'Сб', hours: '13:00 – 18:00' },
       { days: 'Воскресенье', shortDays: 'Вс', hours: '13:00 – 18:00' },
     ],
     
-    note: 'Пн, Вт, Чт — выходные дни',
+    note: 'Вт, Чт — выходные дни',
   },
 
   // ============================================================================
@@ -150,16 +150,12 @@ export const STORE_CONFIG: StoreConfig = {
     },
 
     // 👉 4) TELEGRAM:
-    telegram: {
+    max: {
       url: '',
       handle: '',
     },
 
-    // 👉 5) WHATSAPP:
-    whatsapp: {
-      url: '',
-      phone: '',
-    },
+    
   },
 
   // 🌿 ПРЕИМУЩЕСТВА И КАТЕГОРИИ ДЛЯ ПОКУПАТЕЛЕЙ
